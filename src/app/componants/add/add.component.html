@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <h2 class="text-center">Add product</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter product  name">
+            <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched" class="text-danger">
+                Name is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" id="price" class="form-control" formControlName="price"
+                placeholder="Enter product price ">
+            <div *ngIf="userForm.get('price')?.invalid && userForm.get('price')?.touched" class="text-danger">
+                price is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="text" id="quantity" class="form-control" formControlName="quantity"
+                placeholder="Enter product quantity">
+            <div *ngIf="userForm.get('quantity')?.invalid && userForm.get('quantity')?.touched" class="text-danger">
+                Quantity is required.
+            </div>
+        </div>
+
+        <div formArrayName="contact">
+            <div *ngFor="let u of userForm.get('contact')?.value; let i= index" formGroupName="{{i}}"
+                class="margin-top">
+                <div class="row pt-2">
+                    <div class="col-md-6">
+                        <select class="form-control" formControlName="type">
+                            <option value="">Select</option>
+                            <option value="primary">primary</option>
+                            <option value="secondary">secondary</option>
+                            <option value="home">home</option>
+                            <option value="office">office</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <button (click)="addControl()">add</button>
+                </div>
+                <div>
+                    <button (click)="removeControl(i)">remove</button>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+    </form>
+</div>

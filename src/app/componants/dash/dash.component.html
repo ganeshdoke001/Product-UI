@@ -1,0 +1,32 @@
+<app-card [content]="productList" [cardHeader]="productDetails" [bname]="add" [btnClass]="'btn-primary'"
+    (onPrimary)="addProduct($event)"></app-card>
+
+<ng-template #productList>
+    <!-- <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>price</th>
+                <th>quantity</th>
+                <th>update</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of products">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.quantity}}</td>
+                <td><app-button class="btn " [name]="update" [btnClass]="btnClass" [productId]="item.id"
+                        (onclick)="updateProduct($event)"></app-button></td>
+                <td><app-button class="btn " [name]="delete" [btnClass]="'btn-danger'" [productId]="item.id"
+                        (onclick)="deleteProduct($event)"></app-button></td>
+            </tr>
+        </tbody>
+    </table> -->
+</ng-template>
+
+<app-table [collumns]="collumns" [data]="products" (onEdit)="updateProduct($event)"
+    (onDelete)="deleteProduct($event)"></app-table>

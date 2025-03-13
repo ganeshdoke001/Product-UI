@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header .bg-dark .text-white">
+        <div class="row">
+            <div class=" col-md-6">
+                {{cardHeader}}
+            </div>
+
+            <div class=" col-md-4">
+                <app-button class="btn " [name]="bname" [btnClass]="btnClass"
+                    (onclick)="addProduct($event)"></app-button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div *ngTemplateOutlet="content"></div>
+    </div>
+</div>
